@@ -7,13 +7,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Test"),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text("Sample stuff")],
+        centerTitle: true,
+        title: Text(
+          "Flutter Demo",
+          style: TextStyle(color: Colors.cyanAccent),
         ),
+        backgroundColor: Colors.brown,
       ),
     );
   }

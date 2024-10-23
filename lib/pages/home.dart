@@ -1,68 +1,106 @@
 import 'package:flutter/material.dart';
-import 'package:weather/pages/home.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(fontFamily: 'Poppins'),
-        title: 'Flutter Demo',
-        debugShowCheckedModeBanner: false,
-        
-        home: HomePage());
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      appBar: AppBar(),
+      body: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.only(top: 40, left: 20, right:20),
+            decoration: BoxDecoration(
+              boxShadow: [
+                 BoxShadow(
+
+                color: Color(0xff101617).withOpacity(0.11),
+                blurRadius: 40,
+                spreadRadius: 0.0
+              )
+              ]
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            child: TextField(
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding: EdgeInsets.all(15),
+                prefixIcon: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: SvgPicture.asset('assets/icons/search.svg'),
+                ),
+
+                suffixIcon: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SvgPicture.asset('assets/icons/filter.svg'),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide:BorderSide.none
+                )
+              ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+
+  AppBar appBar() {
+    return AppBar(
+      centerTitle: true,
+      title: Text(
+        "Weather",
+        style: TextStyle(
+          color: Colors.black,
+          fontSize:18,
+          fontWeight: FontWeight.bold
+
+        ),
+      ),
+      backgroundColor: Colors.white,
+      elevation:0.0,
+      leading: GestureDetector(
+        onTap: () {
+          
+        },
+        child: Container(
+           margin:EdgeInsets.all(10) ,
+         alignment: Alignment.center,
+         child: SvgPicture.asset(
+          'assets/icons/right.svg',
+          height: 25,
+          width: 25,
+         ),
+        decoration: BoxDecoration(
+          color: Color(0xffF7F8F8),
+          borderRadius: BorderRadius.circular(10)
+        ),
+      )  
+    ),
+    actions: [
+        GestureDetector(
+          onTap: () {
+            
+          },
+          child: Container(
+         margin:EdgeInsets.all(10) ,
+         alignment: Alignment.center,
+         child: SvgPicture.asset(
+          'assets/icons/more.svg',
+          height: 30,
+          width: 30,
+         ),
+        decoration: BoxDecoration(
+          color: Color(0xffF7F8F8),
+          borderRadius: BorderRadius.circular(10)
+        ),
+          ),
+          
+        ),
+    ],
+    );
+}
 }

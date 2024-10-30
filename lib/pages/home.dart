@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  State<HomePage> createState()=>_HomePageState();
+  List<weathermodels> categories= [];
+  void _getCategories() {
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +44,7 @@ class HomePage extends StatelessWidget {
                 itemBuilder: (context, index){
                   return Container();
                 },
+                itemCount:5,
               ),
              
             )
